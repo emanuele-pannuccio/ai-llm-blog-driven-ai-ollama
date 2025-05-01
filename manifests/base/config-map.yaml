@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ollama-qwen-config
+  labels:
+    app: ollama-qwen-app
+data:
+  OLLAMA_KEEP_ALIVE: 24h
+  OLLAMA_HOST: "0.0.0.0"

@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ollama-qwen-deployment
+  labels:
+    app: ollama-qwen-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ollama-qwen-app
+  template:
+    metadata:
+      labels:
+        app: ollama-qwen-app
+    spec:
+      serviceAccountName: ollama-qwen-sa
+      containers:
+        - name: ollama-qwen
+          image: app-image
+          imagePullPolicy: Always
+          resources:
+            limits:
+              nvidia.com/gpu: 1
+          envFrom:
+            - configMapRef:
+                name: ollama-qwen-config
