@@ -14,4 +14,4 @@ profiles:
     manifests:
       kustomize:
         paths:
-          - manifests/overlays/prod
+          - manifests/overlays/production
