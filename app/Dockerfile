@@ -9,4 +9,3 @@ ENV OLLAMA_CONTEXT_LENGTH=10000
 
 RUN ollama serve & sleep 5 && ollama pull $MODEL
 ENTRYPOINT ["ollama", "serve"]
-#
