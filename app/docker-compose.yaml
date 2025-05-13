@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  ollama:
+    build:
+      context: .         # Assicurati che il Dockerfile sia nella stessa directory
+      dockerfile: Dockerfile
+    environment:
+      - OLLAMA_MODELS=/models
+      - OLLAMA_DEBUG=true
+      - OLLAMA_KEEP_ALIVE=-1
+      - MODEL=qwen2.5:7b
+      - OLLAMA_CONTEXT_LENGTH=10000
+    volumes:
+      - ollama-models:/models
+    ports:
+      - "11434:11434"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
+    runtime: nvidia
+
+volumes:
+  ollama-models:
